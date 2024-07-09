@@ -46,6 +46,11 @@ export default {
 </template>
 
 <style lang="scss">
-@use "./styles/general.scss";
+@use "./styles/general.scss" as *;
+@use "./styles/partials/variables" as*;
+main {
+  background-color: $primary;
+  padding-top: 80px;
+}
 
 </style>
