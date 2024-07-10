@@ -10,14 +10,16 @@ export default {
         return {
             store,
         }
-    }
+    },
 }
 </script>
 
 <template>
     <div class="container">
-        <select name="" id="">
-            <option v-for="single in store.archetype" value=""> {{ single.archetype_name }} </option>
+        <select name="" id="" @click="$emit('onlyArchetype')">
+            <option value="">Select Archetype</option>
+            <option v-for="singleType in store.archetype" :value="singleType.archetype_name"> {{
+                singleType.archetype_name }} </option>
         </select>
     </div>
 

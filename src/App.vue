@@ -25,6 +25,7 @@ export default {
     axiosRequest() {
       axios.get(store.apiUrl)
         .then(response => {
+          console.log("cambia")
           console.log(response.data.data);
           store.cardList = response.data.data
         })
@@ -55,7 +56,7 @@ export default {
 <template>
   <AppHeader />
   <main>
-    <AppSearch />
+    <AppSearch @onlyArchetype="axiosRequest" />
     <AppWrapCard />
   </main>
 </template>
