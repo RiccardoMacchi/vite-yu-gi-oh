@@ -23,16 +23,31 @@ export default {
   },
   methods: {
     axiosRequest() {
-      axios.get(store.apiUrl)
-        .then(response => {
-          console.log("cambia")
-          console.log("archetype search", store.newSearch)
-          console.log(response.data.data);
-          store.cardList = response.data.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      if (store.newSearch !== "Select Archetype") {
+        let apiReqArchetype = store.apiUrl + store.addUrlArchetype + store.newSearch
+        axios.get(apiReqArchetype)
+          .then(response => {
+            console.log("cambia")
+            console.log("archetype search", store.newSearch)
+            console.log(response.data.data);
+            store.cardList = response.data.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      } else {
+        axios.get(store.apiUrl)
+          .then(response => {
+            console.log("cambia")
+            console.log("archetype search", store.newSearch)
+            console.log(response.data.data);
+            store.cardList = response.data.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
+
     },
     axiosRequestArchetype() {
       axios.get(store.apiArchetype)
