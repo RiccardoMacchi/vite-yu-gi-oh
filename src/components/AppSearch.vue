@@ -16,9 +16,8 @@ export default {
 
 <template>
     <div class="container">
-        <select name="" id="" @click="$emit('onlyArchetype')">
-            <option value="">Select Archetype</option>
-            <option v-for="singleType in store.archetype" :value="singleType.archetype_name"> {{
+        <select name="" id="" @click="$emit('onlyArchetype')" v-model="store.newSearch">
+            <option v-for="singleType in store.archetype" :newSearch="singleType.archetype_name"> {{
                 singleType.archetype_name }} </option>
         </select>
     </div>

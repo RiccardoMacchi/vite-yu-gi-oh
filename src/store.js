@@ -5,4 +5,5 @@ export const store = reactive({
     addUrlArchetype: "&archetype=",
     archetype: [],
     apiArchetype: "https://db.ygoprodeck.com/api/v7/archetypes.php",
+    newSearch: "Select Archetype",
 });

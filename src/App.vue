@@ -26,6 +26,7 @@ export default {
       axios.get(store.apiUrl)
         .then(response => {
           console.log("cambia")
+          console.log("archetype search", store.newSearch)
           console.log(response.data.data);
           store.cardList = response.data.data
         })
