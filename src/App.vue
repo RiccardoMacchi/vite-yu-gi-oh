@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import AppHeader from './components/AppHeader.vue';
 import AppWrapCard from './components/AppWrapCard.vue';
+import AppSearch from './components/AppSearch.vue';
 
 // Importazione dello store
 import { store } from './store';
@@ -13,26 +14,39 @@ export default {
   components: {
     AppHeader,
     AppWrapCard,
+    AppSearch
   },
-  data(){
+  data() {
     return {
       store,
     }
   },
   methods: {
-    axiosRequest(){
+    axiosRequest() {
       axios.get(store.apiUrl)
-          .then(response =>{
-              console.log(response.data.data);
-              store.cardList = response.data.data
-          })
-          .catch(error => {
-              console.log(error)
-          })
-        }
+        .then(response => {
+          console.log(response.data.data);
+          store.cardList = response.data.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    axiosRequestArchetype() {
+      axios.get(store.apiArchetype)
+        .then(response => {
+          console.log(response.data);
+          store.archetype = response.data;
+          console.log("store archetype", store.archetype)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   },
-  created(){
+  created() {
     this.axiosRequest();
+    this.axiosRequestArchetype();
   }
 
 }
@@ -41,6 +55,7 @@ export default {
 <template>
   <AppHeader />
   <main>
+    <AppSearch />
     <AppWrapCard />
   </main>
 </template>
@@ -48,9 +63,9 @@ export default {
 <style lang="scss">
 @use "./styles/general.scss" as *;
 @use "./styles/partials/variables" as*;
+
 main {
   background-color: $primary;
   padding-top: 80px;
 }
-
 </style>
